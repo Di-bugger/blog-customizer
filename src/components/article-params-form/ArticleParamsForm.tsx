@@ -3,10 +3,18 @@ import { Button } from 'src/ui/button';
 
 import styles from './ArticleParamsForm.module.scss';
 
-export const ArticleParamsForm = () => {
+interface ArticleParamsFormProps {
+	isOpen: boolean;
+	onToggle: () => void;
+}
+
+export const ArticleParamsForm = ({
+	isOpen,
+	onToggle,
+}: ArticleParamsFormProps) => {
 	return (
 		<>
-			<ArrowButton isOpen={false} onClick={() => {}} />
+			<ArrowButton isOpen={isOpen} onClick={onToggle} />
 			<aside className={styles.container}>
 				<form className={styles.form}>
 					<div className={styles.bottomContainer}>
