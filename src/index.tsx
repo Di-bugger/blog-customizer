@@ -13,21 +13,8 @@ const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 
 const App = () => {
-	//Для открытия/закрытия эсайда
-	const [isOpen, setIsOpen] = useState<boolean>(false);
-	//Для сохранения выбранных настроек
-	const [articleState, setArticleState] = useState(defaultArticleState);
 	//Сохраненные настройки
 	const [state, setState] = useState(defaultArticleState);
-
-	const handleApply = () => {
-		setState(articleState);
-	};
-
-	const handleReset = () => {
-		setArticleState(defaultArticleState);
-		setState(defaultArticleState);
-	};
 
 	return (
 		<main
@@ -41,14 +28,7 @@ const App = () => {
 					'--bg-color': state.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm
-				isOpen={isOpen}
-				onToggle={() => setIsOpen(!isOpen)}
-				articleState={articleState}
-				setArticleState={setArticleState}
-				handleReset={handleReset}
-				handleApply={handleApply}
-			/>
+			<ArticleParamsForm setState={setState} />
 			<Article />
 		</main>
 	);
